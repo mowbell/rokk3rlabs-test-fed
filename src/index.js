@@ -1,9 +1,7 @@
 import angular from 'angular';
-
 import {main} from './app/main';
-import {SpeedZonesComponent, SpeedAverageComponent, CountByZonesComponent} from './app/dashboard';
 import 'angular-ui-router';
-import 'angular-chart.js';
+import './app/dashboard';
 import routesConfig from './routes';
 
 import './index.scss';
@@ -11,9 +9,6 @@ import './index.scss';
 export const app = 'app';
 
 angular
-  .module(app, ['ui.router', 'chart.js'])
+  .module(app, ['ui.router', 'app.dashboard'])
   .config(routesConfig)
-  .component('app', main)
-  .component('speedZones', SpeedZonesComponent)
-  .component('speedAvg', SpeedAverageComponent)
-  .component('countByZones', CountByZonesComponent);
+  .component('app', main);
