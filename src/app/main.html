@@ -1,1 +1,38 @@
-<dashboard></dashboard>
+<header class="header">
+    <!-- <a ui-sref="app" class="header-logo"><img src="/assets/images/logo.png" /></a> -->
+    <div class="user-settings">
+        <a href="#">
+            <span>Admin Name </span>
+            <i class="fa fa-gear"></i>
+        </a>
+    </div>
+</header>
+<nav class="main-navigation">
+    <a ui-sref="app" class="nav-logo"><img src="/assets/images/logo.png" /></a>
+    <h2 class="nav-title">Navigate</h2>
+    <ul class="nav-list">
+        <li class="nav-item">
+            <i class="fa fa-line-chart"></i>
+            <a ui-sref="app.dashboard">Analytics</a>
+        </li>
+        <li class="nav-item">
+            <i class="fa fa-newspaper-o"></i>
+            <a ui-sref="app">News</a>
+        </li>
+        <li class="nav-item">
+            <i class="fa fa-file-text-o"></i>
+            <a ui-sref="app">Board Brief</a>
+        </li>
+        <li class="nav-item">
+            <i class="fa fa-briefcase"></i>
+            <a ui-sref="app">Briefcase</a>
+        </li>
+        <li class="nav-item">
+            <i class="fa fa-angle-double-left"></i>
+            </i><a ui-sref="app">Close Menu</a>
+        </li>
+    </ul>
+</nav>
+<main class="main-content">
+    <ui-view></ui-view>
+</main>
