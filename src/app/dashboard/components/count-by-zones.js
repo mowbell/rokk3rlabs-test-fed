@@ -1,10 +1,21 @@
 class CountByZonesCtrl {
   constructor() {
     this.labels = [];
-
     this.chartData = [[]];
+    this.option = this.buildOptions();
+  }
+  $onChanges() {
+    this.labels = [];
+    this.values = [];
+    this.counts.forEach((zoneCount, index) => {
+      this.labels.push(index + 1);
+      this.values.push(zoneCount.count);
+    });
+    this.chartData = [this.values];
+  }
+  buildOptions() {
     const that = this;
-    this.options = {
+    return {
       responsive: true,
       title: {
         display: true,
@@ -46,15 +57,6 @@ class CountByZonesCtrl {
         }
       }
     };
-  }
-  $onChanges(changesObj) {
-    this.labels = [];
-    this.values = [];
-    this.counts.forEach((zoneCount, index) => {
-      this.labels.push(index + 1);
-      this.values.push(zoneCount.count);
-    });
-    this.chartData = [this.values];
   }
 }
 export const CountByZonesComponent = {

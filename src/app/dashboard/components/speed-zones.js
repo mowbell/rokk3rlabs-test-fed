@@ -1,18 +1,35 @@
-export const SpeedZonesComponent = {
-  template: require('./speed-zones.html'),
-  controller($log) {
-    this.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    this.series = ['Series A', 'Series B'];
-    this.data = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-    ];
-    this.onClick = function (points, evt) {
-      $log(points, evt);
-    };
-    this.datasetOverride = [{yAxisID: 'y-axis-1'}, {yAxisID: 'y-axis-2'}];
-    this.options = {
-      scales: {
+class SpeedZonesCtrl {
+  constructor() {
+    this.labels = [];
+    this.series = [];
+    this.data = [];
+    // this.datasetOverride = [{yAxisID: 'y-axis-1'}, {yAxisID: 'y-axis-2'}];
+
+    this.options = this.buildOptions();
+  }
+  $onChanges() {
+    this.series = Object.keys(this.speeds.zones);
+    this.labels = this.speeds.times.map(time => {
+      const date = new Date(time);
+      return `${date.getHours()}: ${date.getMinutes()}`;
+    });
+    this.data = Object.values(this.speeds.zones);
+  }
+  buildOptions() {
+    return {
+      responsive: true,
+      legend: {
+        display: true,
+        position: 'right',
+        labels: {
+          boxWidth: 10
+        }
+      },
+      title: {
+        display: true,
+        text: 'Speed Zones'
+      }
+      /* scales: {
         yAxes: [
           {
             id: 'y-axis-1',
@@ -27,7 +44,15 @@ export const SpeedZonesComponent = {
             position: 'right'
           }
         ]
-      }
+      } */
     };
   }
+}
+
+export const SpeedZonesComponent = {
+  template: require('./speed-zones.html'),
+  bindings: {
+    speeds: '<'
+  },
+  controller: SpeedZonesCtrl
 };

@@ -1,4 +1,4 @@
-import {ZONES_ID} from '../constants';
+const ZONES_ID = ['Calle 85', 'Salitre plaza', 'Parque 93', 'Calle 80', 'Centro'];
 export default class Activity {
   getNewData() {
       /* return [
@@ -8,6 +8,7 @@ export default class Activity {
           {"zoneId":"Calle 80", "data":{"count":3,"speed":13.5,"time":1466781876681}},
           {"zoneId":"Centro", "data":{"count":1,"speed": 9 ,"time":1466781876681}}
       ] */
+
     return ZONES_ID.map(zone => {
       return {
         zoneId: zone,
