@@ -1,5 +1,4 @@
-import {ZONES_ID} from './constants';
-import ZoneSpeed from './services/zone-speed';
+import ZoneSpeed from './vo/zone-speed';
 class DashboardCtrl {
   constructor($log, Activity, $interval) {
     'ngInject';
@@ -9,8 +8,8 @@ class DashboardCtrl {
 
     this.speedAverages = [];
     this.zoneCounts = [];
-
-    this.initZones();
+    this.zonesSpeeds = {zones: {}, times: []};
+    this.zones = {};
   }
   $onInit() {
     this.startActivityUpdater();
@@ -22,11 +21,16 @@ class DashboardCtrl {
   updateCharts() {
     const zonesData = this.Activity.getNewData();
     zonesData.forEach(zoneData => {
-      const zoneSpeed = this.zones[zoneData.zoneId];
+      const zoneId = zoneData.zoneId;
+      if (!this.zones[zoneId]) {
+        this.zones[zoneId] = new ZoneSpeed(zoneId);
+      }
+      const zoneSpeed = this.zones[zoneId];
       zoneSpeed.addSpeed(zoneData.data);
     });
     this.updateSpeedAvgChartData();
     this.updateCountByZoneChartData();
+    this.updateZonesSpeedChartData();
   }
   updateSpeedAvgChartData() {
     this.speedAverages = Object.entries(this.zones).map(zone => {
@@ -46,11 +50,16 @@ class DashboardCtrl {
       };
     });
   }
-  initZones() {
-    this.zones = {};
-    ZONES_ID.forEach(zoneId => {
-      this.zones[zoneId] = new ZoneSpeed(zoneId);
+  updateZonesSpeedChartData() {
+    const speedsData = {zones: {}};
+    Object.entries(this.zones).forEach((zone, index) => {
+      const [zoneId, zoneSpeed] = zone;
+      speedsData.zones[zoneId] = zoneSpeed.speeds;
+      if (index === 0) {
+        speedsData.times = zoneSpeed.times;
+      }
     });
+    this.zonesSpeeds = speedsData;
   }
 
 }

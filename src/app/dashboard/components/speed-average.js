@@ -2,7 +2,18 @@ class SpeedAverageCtrl {
   constructor() {
     this.labels = [];
     this.chartData = [];
-    this.options = {
+    this.options = this.buildOptions();
+  }
+  $onChanges() {
+    this.labels = [];
+    this.chartData = [];
+    this.averages.forEach(zoneAVG => {
+      this.labels.push(zoneAVG.zoneId);
+      this.chartData.push(zoneAVG.avg);
+    });
+  }
+  buildOptions() {
+    return {
       responsive: true,
       legend: {
         display: true,
@@ -17,14 +28,6 @@ class SpeedAverageCtrl {
         animateRotate: true
       }
     };
-  }
-  $onChanges(changesObj) {
-    this.labels = [];
-    this.chartData = [];
-    this.averages.forEach(zoneAVG => {
-      this.labels.push(zoneAVG.zoneId);
-      this.chartData.push(zoneAVG.avg);
-    });
   }
 }
 export const SpeedAverageComponent = {
