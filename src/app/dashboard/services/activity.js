@@ -1,4 +1,5 @@
 const ZONES_ID = ['Calle 85', 'Salitre plaza', 'Parque 93', 'Calle 80', 'Centro'];
+const lastZoneSpeeds = {};
 export default class Activity {
   getNewData() {
       /* return [
@@ -10,11 +11,12 @@ export default class Activity {
       ] */
 
     return ZONES_ID.map(zone => {
+      lastZoneSpeeds[zone] = getSpeedRandom(lastZoneSpeeds[zone]);
       return {
         zoneId: zone,
         data: {
           count: getCountRandom(),
-          speed: getSpeedRandom(),
+          speed: lastZoneSpeeds[zone],
           time: getTime()
         }
 
@@ -31,6 +33,12 @@ function getCountRandom() {
   return 1 + Math.floor(5 * Math.random());
 }
 
-function getSpeedRandom() {
-  return Math.floor((1 + (100 * Math.random())) * 100) / 100;
+function getSpeedRandom(lastSpeed) {
+  if (lastSpeed === undefined) {
+    return Math.floor(((100 * Math.random())) * 100) / 100;
+  }
+  const increment = Math.floor(((10 * Math.random())) * 100) / 100;
+  let newSpeed = lastSpeed + Math.pow(-1, Math.round(Math.random())) * increment;
+  newSpeed = (newSpeed > 100) ? 100 : ((newSpeed < 0) ? 0 : newSpeed);
+  return newSpeed;
 }

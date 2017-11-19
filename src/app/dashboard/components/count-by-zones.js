@@ -2,7 +2,7 @@ class CountByZonesCtrl {
   constructor() {
     this.labels = [];
     this.chartData = [[]];
-    this.option = this.buildOptions();
+    this.options = this.buildOptions();
   }
   $onChanges() {
     this.labels = [];
