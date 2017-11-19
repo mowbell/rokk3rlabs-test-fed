@@ -8,28 +8,41 @@
     </div>
 </header>
 <nav class="main-navigation">
-    <a ui-sref="app" class="nav-logo"><img src="/assets/images/logo.png" /></a>
+    <a ui-sref="app" class="nav-logo">
+        <i class="fa fa-lg fa-home"></i>
+        <!-- <img src="/assets/images/logo.png" /> -->
+    </a>
     <h2 class="nav-title">Navigate</h2>
     <ul class="nav-list">
         <li class="nav-item">
-            <i class="fa fa-line-chart"></i>
-            <a ui-sref="app.dashboard">Analytics</a>
+            <a ui-sref="dashboard">
+                <i class="fa fa-line-chart"></i>
+                <span>Analytics</span>
+            </a>
         </li>
         <li class="nav-item">
-            <i class="fa fa-newspaper-o"></i>
-            <a ui-sref="app">News</a>
+            <a ui-sref="news">
+                <i class="fa fa-newspaper-o"></i>
+                <span>News</span>
+            </a>
         </li>
         <li class="nav-item">
-            <i class="fa fa-file-text-o"></i>
-            <a ui-sref="app">Board Brief</a>
+            <a ui-sref="board-brief">
+                <i class="fa fa-file-text-o"></i>
+                <span>Board Brief</span>
+            </a>
         </li>
         <li class="nav-item">
-            <i class="fa fa-briefcase"></i>
-            <a ui-sref="app">Briefcase</a>
+            <a ui-sref="briefcase">
+                <i class="fa fa-briefcase"></i>
+                <span>Briefcase</span>
+            </a>
         </li>
         <li class="nav-item">
-            <i class="fa fa-angle-double-left"></i>
-            </i><a ui-sref="app">Close Menu</a>
+            <a ui-sref="app">
+                <i class="fa fa-angle-double-left"></i>
+                <span>Close Menu</span>
+            </a>
         </li>
     </ul>
 </nav>

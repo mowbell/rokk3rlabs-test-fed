@@ -6,12 +6,33 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('app', {
-      url: '/',
+    .state('root', {
+      abstract: true,
       component: 'app'
     })
-    .state('app.dashboard', {
-      url: 'dashboard',
+    .state('app', {
+      url: '/',
+      parent: 'root',
+      template: '<h1>Home</h1>'
+    })
+    .state('dashboard', {
+      parent: 'root',
+      url: '/dashboard',
       component: 'dashboard'
+    })
+    .state('news', {
+      parent: 'root',
+      url: '/news',
+      template: '<h1>News Page</h1>'
+    })
+    .state('board-brief', {
+      parent: 'root',
+      url: '/board-brief',
+      template: '<h1>Board Brief Page</h1>'
+    })
+    .state('briefcase', {
+      parent: 'root',
+      url: '/briefcase',
+      template: '<h1>Briefcase Page</h1>'
     });
 }
