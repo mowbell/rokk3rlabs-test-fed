@@ -13,7 +13,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('app', {
       url: '/',
       parent: 'root',
-      template: '<h1>Home</h1>'
+      template: '<h1>Home Page</h1>'
     })
     .state('dashboard', {
       parent: 'root',

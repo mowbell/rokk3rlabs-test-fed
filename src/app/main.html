@@ -7,7 +7,7 @@
         </a>
     </div>
 </header>
-<nav class="main-navigation">
+<nav class="main-navigation" ng-class="{'navigation-is-closed' : $ctrl.isNavClosed}">
     <a ui-sref="app" class="nav-logo">
         <i class="fa fa-lg fa-home"></i>
         <!-- <img src="/assets/images/logo.png" /> -->
@@ -38,14 +38,14 @@
                 <span>Briefcase</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a ui-sref="app">
-                <i class="fa fa-angle-double-left"></i>
+        <li class="nav-item nav-close-item">
+            <a href="#" ng-click="$ctrl.onCloseBtn($event)">
+                <i class="fa " ng-class="{'fa-angle-double-left' : !$ctrl.isNavClosed, 'fa-angle-double-right' : $ctrl.isNavClosed}"></i>
                 <span>Close Menu</span>
             </a>
         </li>
     </ul>
 </nav>
-<main class="main-content">
+<main class="main-content" ng-class="{'navigation-is-closed' : $ctrl.isNavClosed}">
     <ui-view></ui-view>
 </main>

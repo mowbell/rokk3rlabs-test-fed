@@ -23,13 +23,39 @@ $break-medium:1200px;
     position: absolute;
     top:0;
     width:$header-height;
+    transition: width 0.2s ease-in-out;
 
     @media screen and (min-width: $break-x-small){
         width:20%;
+        &.navigation-is-closed{
+            width:$header-height;
+            .nav-title{
+                display: none;
+            }
+            .nav-logo{
+                
+                background-image: none;
+                i{
+                    display: block;
+                    line-height: 2em;
+                }
+            }
+            .nav-list{
+                padding:0;
+                .nav-item{
+                    text-align: center;
+                        
+                    a span{
+                        display: none;
+                    }
+                }
+            }
+        }
     }
     @media screen and (min-width: $break-medium){
         max-width:15em;
     }
+    
 
     .nav-title{
         margin:1em 1.5em 0em;
@@ -75,6 +101,7 @@ $break-medium:1200px;
         margin:0;
         padding: 3*$padding;
         color:white;
+        
         .nav-item{
             $nav-item-height:3em;
             list-style: none;
@@ -82,6 +109,7 @@ $break-medium:1200px;
             font-weight: bold;
             line-height: $nav-item-height;
             a{
+                
                 text-decoration: none;
                 i{
                     color:#5c9df5;
@@ -89,8 +117,12 @@ $break-medium:1200px;
                 }
                 
             }
-            &:last-child{
+            &.nav-close-item{
+                display:none;
                 margin-top:18*$padding;
+                @media screen and (min-width: $break-x-small){
+                    display:block;
+                }
             }
             @media screen and (max-width: $break-x-small){
                 text-align: center;
@@ -118,10 +150,14 @@ $break-medium:1200px;
     min-height: calc(100% - #{$header-height} );
     right: 0;
     padding: 3*$padding;
+    transition: left 0.2s ease-in-out;
     @media screen and (min-width: $break-x-small){
         left:20%;
     }
     @media screen and (min-width: $break-medium){
         left:15em;
+    }
+    &.navigation-is-closed{
+        left: $header-height;
     }
 }
