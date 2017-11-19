@@ -18,12 +18,9 @@ class SpeedAverageCtrl {
       }
     };
   }
-  $onInit() {
-  }
   $onChanges(changesObj) {
     this.labels = [];
     this.chartData = [];
-    console.log('$onChanges', changesObj);
     this.averages.forEach(zoneAVG => {
       this.labels.push(zoneAVG.zoneId);
       this.chartData.push(zoneAVG.avg);

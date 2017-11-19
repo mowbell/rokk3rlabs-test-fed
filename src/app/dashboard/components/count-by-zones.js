@@ -1,12 +1,66 @@
+class CountByZonesCtrl {
+  constructor() {
+    this.labels = [];
+
+    this.chartData = [[]];
+    const that = this;
+    this.options = {
+      responsive: true,
+      title: {
+        display: true,
+        text: 'Count By Zone'
+      },
+      legend: {
+        display: true,
+        position: 'right',
+        labels: {
+          boxWidth: 0,
+          generateLabels() {
+            const labels = that.counts.map((countData, index) => {
+              return {text: `${index + 1}: Zone ${countData.zoneId}`};
+            });
+            return labels;
+          }
+        },
+        onClick: null
+
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMin: 0
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          title([{index}]) {
+            if (that.counts) {
+              const zoneId = that.counts[index].zoneId;
+              return `Zone: ${zoneId}`;
+            }
+          },
+          label({index}, {datasets: [{data}]}) {
+            return `Count: ${data[index]}`;
+          }
+        }
+      }
+    };
+  }
+  $onChanges(changesObj) {
+    this.labels = [];
+    this.values = [];
+    this.counts.forEach((zoneCount, index) => {
+      this.labels.push(index + 1);
+      this.values.push(zoneCount.count);
+    });
+    this.chartData = [this.values];
+  }
+}
 export const CountByZonesComponent = {
   template: require('./count-by-zones.html'),
-  controller() {
-    this.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    this.series = ['Series A', 'Series B'];
-
-    this.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
-    ];
-  }
+  bindings: {
+    counts: '<'
+  },
+  controller: CountByZonesCtrl
 };

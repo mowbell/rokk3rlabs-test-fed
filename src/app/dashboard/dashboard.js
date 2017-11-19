@@ -8,6 +8,7 @@ class DashboardCtrl {
     this.$interval = $interval;
 
     this.speedAverages = [];
+    this.zoneCounts = [];
 
     this.initZones();
   }
@@ -25,6 +26,7 @@ class DashboardCtrl {
       zoneSpeed.addSpeed(zoneData.data);
     });
     this.updateSpeedAvgChartData();
+    this.updateCountByZoneChartData();
   }
   updateSpeedAvgChartData() {
     this.speedAverages = Object.entries(this.zones).map(zone => {
@@ -32,6 +34,15 @@ class DashboardCtrl {
       return {
         zoneId,
         avg: zoneSpeed.speedAvg
+      };
+    });
+  }
+  updateCountByZoneChartData() {
+    this.zoneCounts = Object.entries(this.zones).map(zone => {
+      const [zoneId, zoneSpeed] = zone;
+      return {
+        zoneId,
+        count: zoneSpeed.totalCount
       };
     });
   }
