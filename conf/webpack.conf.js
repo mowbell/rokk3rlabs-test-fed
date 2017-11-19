@@ -3,7 +3,6 @@ const conf = require('./gulp.conf');
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FailPlugin = require('webpack-fail-plugin');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -19,7 +18,12 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
-        enforce: 'pre'
+        enforce: 'pre',
+        options:{
+          fix:true,
+          failOnError: false,
+          failOnWarning:false
+        }
       },
       {
         test: /\.(css|scss)$/,
@@ -48,8 +52,6 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    FailPlugin,
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')
     }),
