@@ -1,0 +1,44 @@
+@import '../common/scss/variables';
+.dashboard{
+    display:flex;
+    flex-wrap:wrap;;
+    .analytics-chart{
+        width: 100%;
+        padding: 2*$padding;
+        box-sizing: border-box;
+        background-color:white;
+        border-radius: 4px;
+        border: solid 1px #e7e7ed;
+        margin-bottom: 2*$padding;
+        &.chart-speed-avg{
+            margin-left:25%;
+            width: 50%;
+        }
+        @media screen and (min-width: $break-medium){
+            &.chart-speed-avg{
+                width: calc(30% - #{$padding});
+                margin-left:$padding;
+            }
+            &.chart-count-by-zones{
+                width: calc(70% - #{$padding});
+                margin-right:$padding;
+            }
+            &.chart-speed-zones{
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-height: $break-x-small) and (max-width: $break-xx-small){
+            .chart{
+                display: none !important;
+            }
+        } 
+        .charts-not-visible{
+            display:none;
+            @media screen and (max-height: $break-x-small) and (max-width: $break-xx-small){
+                display: block;
+            } 
+        }
+    }
+}
+

@@ -17,15 +17,26 @@ class SpeedAverageCtrl {
       responsive: true,
       legend: {
         display: true,
-        position: 'bottom'
+        position: 'bottom',
+        labels: {
+          boxWidth: 10,
+          fontFamily: '\'Open Sans\', sans-serif',
+          fontSize: 9
+        }
       },
       title: {
         display: true,
-        text: 'Speed Average'
+        text: 'Speed Average',
+        fontFamily: '\'Open Sans\', sans-serif',
+        fontColor: '#7cb2ed'
       },
       animation: {
         animateScale: true,
         animateRotate: true
+      },
+      tooltips: {
+        titleFontFamily: '\'Open Sans\', sans-serif',
+        bodyFontFamily: '\'Open Sans\', sans-serif'
       }
     };
   }

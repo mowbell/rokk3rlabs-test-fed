@@ -19,13 +19,17 @@ class CountByZonesCtrl {
       responsive: true,
       title: {
         display: true,
-        text: 'Count By Zone'
+        text: 'Count By Zone',
+        fontFamily: '\'Open Sans\', sans-serif',
+        fontColor: '#7cb2ed'
       },
       legend: {
         display: true,
         position: 'right',
         labels: {
           boxWidth: 0,
+          fontFamily: '\'Open Sans\', sans-serif',
+          fontSize: 10,
           generateLabels() {
             const labels = that.counts.map((countData, index) => {
               return {text: `${index + 1}: Zone ${countData.zoneId}`};
@@ -39,11 +43,21 @@ class CountByZonesCtrl {
       scales: {
         yAxes: [{
           ticks: {
-            suggestedMin: 0
+            suggestedMin: 0,
+            fontFamily: '\'Open Sans\', sans-serif',
+            fontSize: 10
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            fontFamily: '\'Open Sans\', sans-serif',
+            fontSize: 10
           }
         }]
       },
       tooltips: {
+        titleFontFamily: '\'Open Sans\', sans-serif',
+        bodyFontFamily: '\'Open Sans\', sans-serif',
         callbacks: {
           title([{index}]) {
             if (that.counts) {

@@ -1,4 +1,6 @@
+import './dashboard.scss';
 import ZoneSpeed from './vo/zone-speed';
+const INTERVAL_SECONDS = 5000;
 class DashboardCtrl {
   constructor($log, Activity, $interval) {
     'ngInject';
@@ -16,7 +18,7 @@ class DashboardCtrl {
   }
   startActivityUpdater() {
     this.updateCharts();
-    this.$interval(this.updateCharts.bind(this), 5000);
+    this.$interval(this.updateCharts.bind(this), INTERVAL_SECONDS);
   }
   updateCharts() {
     const zonesData = this.Activity.getNewData();
