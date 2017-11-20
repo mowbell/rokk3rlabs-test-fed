@@ -1,0 +1,165 @@
+@import './common/scss/variables';
+
+.header {
+    height: $header-height;
+    background-color: $header-color;
+    .user-settings{
+        color:white;
+        float: right;
+        line-height: $header-line-height;
+        padding: $padding;
+        font-weight: bold;
+    }
+}
+
+
+.main-navigation{
+    position: absolute;
+    top:0;
+    width:$header-height;
+    transition: width 0.2s ease-in-out;
+
+    @media screen and (min-width: $break-x-small){
+        width:20%;
+        &.navigation-is-closed{
+            width:$header-height;
+            .nav-title{
+                display: none;
+            }
+            .nav-logo{
+                
+                background-image: none;
+                i{
+                    display: block;
+                    line-height: 2em;
+                }
+            }
+            .nav-list{
+                padding:0;
+                .nav-item{
+                    text-align: center;
+                        
+                    a span{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (min-width: $break-medium){
+        max-width:15em;
+    }
+    
+
+    .nav-title{
+        margin:1em 1.5em 0em;
+        line-height: 1.5em;
+        text-transform: uppercase;
+        color:#575a5f;
+        border-bottom:2px solid #575a5f;
+        display: none;
+        @media screen and (min-width: $break-x-small){
+            display: block;
+        }
+    }
+    .nav-logo{
+        display: block;
+        height: $header-height;
+        padding:$padding;
+        background-color:white;
+        box-sizing: border-box;
+        line-height:$header-line-height;
+        text-align: center;
+        
+        /* img{
+            display:none;
+            width:100%;
+            height: auto;
+        } */
+
+        @media screen and (min-width: $break-x-small){
+            background-image: url(/assets/images/logo.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            /* img{
+                display:block;
+            } */
+            i{
+                display: none;
+            }
+        }
+        
+    }
+    .nav-list{
+        margin:0;
+        padding: 3*$padding;
+        color:white;
+        
+        .nav-item{
+            $nav-item-height:3em;
+            list-style: none;
+            height:$nav-item-height;
+            font-weight: bold;
+            line-height: $nav-item-height;
+            a{
+                display:block;
+                text-decoration: none;
+                i{
+                    color:#5c9df5;
+                    padding: 0 $padding;
+                }
+
+                &:hover{
+                    i{
+                        color:white;
+                        padding: 0 $padding;
+                    }
+                    
+                }
+                
+            }
+            &.nav-close-item{
+                display:none;
+                margin-top:18*$padding;
+                @media screen and (min-width: $break-x-small){
+                    display:block;
+                }
+            }
+            @media screen and (max-width: $break-x-small){
+                text-align: center;
+                
+                a span{
+                    display: none;
+                }
+            }
+        }
+
+        @media screen and (max-width: $break-x-small){
+            padding:0;
+        }
+    }
+}
+
+.main-content{
+    background-color: #f5f5fa;
+    /*margin-left: $header-height;
+    min-height: 100%;*/
+    overflow: hidden;
+    position: absolute;
+    left: $header-height;
+    min-height: 100%;
+    min-height: calc(100% - #{$header-height} );
+    right: 0;
+    padding: 2*$padding;
+    transition: left 0.2s ease-in-out;
+    @media screen and (min-width: $break-x-small){
+        left:20%;
+    }
+    @media screen and (min-width: $break-medium){
+        left:15em;
+    }
+    &.navigation-is-closed{
+        left: $header-height;
+    }
+}

@@ -1,0 +1,51 @@
+<header class="header">
+    <!-- <a ui-sref="app" class="header-logo"><img src="/assets/images/logo.png" /></a> -->
+    <div class="user-settings">
+        <a href="#">
+            <span>Admin Name </span>
+            <i class="fa fa-gear"></i>
+        </a>
+    </div>
+</header>
+<nav class="main-navigation" ng-class="{'navigation-is-closed' : $ctrl.isNavClosed}">
+    <a ui-sref="app" class="nav-logo">
+        <i class="fa fa-lg fa-home"></i>
+        <!-- <img src="/assets/images/logo.png" /> -->
+    </a>
+    <h2 class="nav-title">Navigate</h2>
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a ui-sref="dashboard">
+                <i class="fa fa-line-chart"></i>
+                <span>Analytics</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="news">
+                <i class="fa fa-newspaper-o"></i>
+                <span>News</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="board-brief">
+                <i class="fa fa-file-text-o"></i>
+                <span>Board Brief</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="briefcase">
+                <i class="fa fa-briefcase"></i>
+                <span>Briefcase</span>
+            </a>
+        </li>
+        <li class="nav-item nav-close-item">
+            <a href="#" ng-click="$ctrl.onCloseBtn($event)">
+                <i class="fa " ng-class="{'fa-angle-double-left' : !$ctrl.isNavClosed, 'fa-angle-double-right' : $ctrl.isNavClosed}"></i>
+                <span>Close Menu</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<main class="main-content" ng-class="{'navigation-is-closed' : $ctrl.isNavClosed}">
+    <ui-view></ui-view>
+</main>
