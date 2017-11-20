@@ -33,16 +33,25 @@ class SpeedZonesCtrl {
         display: true,
         position: 'right',
         labels: {
-          boxWidth: 10
+          boxWidth: 10,
+          fontFamily: '\'Open Sans\', sans-serif',
+          fontSize: 10
         }
       },
       title: {
         display: true,
-        text: 'Speed Zones'
+        position: 'top',
+        text: 'Speed Zones',
+        fontFamily: '\'Open Sans\', sans-serif',
+        fontColor: '#7cb2ed'
       },
       animation: {
         duration: 1,
         easing: 'linear'
+      },
+      tooltips: {
+        titleFontFamily: '\'Open Sans\', sans-serif',
+        bodyFontFamily: '\'Open Sans\', sans-serif'
       },
       scales: {
         yAxes: [{
@@ -51,7 +60,15 @@ class SpeedZonesCtrl {
             suggestedMax: 100,
             callback(value) {
               return value + 'Km';
-            }
+            },
+            fontFamily: '\'Open Sans\', sans-serif',
+            fontSize: 10
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            fontFamily: '\'Open Sans\', sans-serif',
+            fontSize: 10
           }
         }]
       }
