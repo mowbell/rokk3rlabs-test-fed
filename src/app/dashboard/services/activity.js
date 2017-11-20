@@ -34,11 +34,11 @@ function getCountRandom() {
 }
 
 function getSpeedRandom(lastSpeed) {
-  if (lastSpeed === undefined) {
+  if (angular.isUndefined(lastSpeed)) {
     return Math.floor(((100 * Math.random())) * 100) / 100;
   }
   const increment = Math.floor(((10 * Math.random())) * 100) / 100;
-  let newSpeed = lastSpeed + Math.pow(-1, Math.round(Math.random())) * increment;
+  let newSpeed = lastSpeed + (Math.pow(-1, Math.round(Math.random())) * increment);
   newSpeed = (newSpeed > 100) ? 100 : ((newSpeed < 0) ? 0 : newSpeed);
   return newSpeed;
 }

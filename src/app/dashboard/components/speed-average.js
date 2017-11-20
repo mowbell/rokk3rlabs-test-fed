@@ -17,7 +17,10 @@ class SpeedAverageCtrl {
       responsive: true,
       legend: {
         display: true,
-        position: 'bottom'
+        position: 'bottom',
+        labels: {
+          boxWidth: 10
+        }
       },
       title: {
         display: true,

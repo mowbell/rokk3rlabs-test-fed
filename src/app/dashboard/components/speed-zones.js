@@ -49,7 +49,7 @@ class SpeedZonesCtrl {
           ticks: {
             suggestedMin: 0,
             suggestedMax: 100,
-            callback(value, index, values) {
+            callback(value) {
               return value + 'Km';
             }
           }
